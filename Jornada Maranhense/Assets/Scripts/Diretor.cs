@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Diretor : MonoBehaviour
 {
+    [SerializeField]
+    private Text valorRecorde; 
     [SerializeField]
     private GameObject imagemGameOver;
     [SerializeField]
@@ -12,6 +15,7 @@ public class Diretor : MonoBehaviour
     private AudioSource audioGameOver; 
     private Pomba pomba;
     private Pontuacao pontuacao;
+    private int recorde; 
 
     private void Start()
     {
@@ -22,6 +26,8 @@ public class Diretor : MonoBehaviour
     public void FinalizarJogo()
     {
         Time.timeScale = 0;
+        this.pontuacao.SalvarRecorde();
+        this.AtualizarInterfaceGrafica();
         this.imagemGameOver.SetActive(true);
         this.somDeFundo.Stop(); 
         this.audioGameOver.Play(); 
@@ -35,6 +41,12 @@ public class Diretor : MonoBehaviour
         this.DestruirObstaculos();
         this.somDeFundo.Play();
         this.pontuacao.Reiniciar(); // Corrigido com os parênteses
+    }
+
+    private void AtualizarInterfaceGrafica()
+    {
+        this.recorde = PlayerPrefs.GetInt("recorde");
+        this.valorRecorde.text = recorde.ToString(); 
     }
 
     private void DestruirObstaculos()
