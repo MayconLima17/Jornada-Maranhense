@@ -35,7 +35,6 @@ public class Obstaculo : MonoBehaviour
         // Verifica se já passou da pomba e ainda não pontuou
         if (!this.pontuei && this.transform.position.x < this.posicaoDoAviao.x)
         {
-            Debug.Log("pontuou");
             this.pontuacao.AdicionarPontos();
             this.pontuei = true; // Marca como já pontuado
         }
@@ -44,7 +43,6 @@ public class Obstaculo : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D outro)
     {
         this.Destruir();
-        Debug.Log("Destruido");
     }
 
     public void Destruir()
