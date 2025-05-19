@@ -6,7 +6,10 @@ public class Diretor : MonoBehaviour
 {
     [SerializeField]
     private GameObject imagemGameOver;
-
+    [SerializeField]
+    private AudioSource somDeFundo;
+    [SerializeField]
+    private AudioSource audioGameOver; 
     private Pomba pomba;
     private Pontuacao pontuacao;
 
@@ -20,6 +23,8 @@ public class Diretor : MonoBehaviour
     {
         Time.timeScale = 0;
         this.imagemGameOver.SetActive(true);
+        this.somDeFundo.Stop(); 
+        this.audioGameOver.Play(); 
     }
 
     public void ReiniciarJogo()
@@ -28,6 +33,7 @@ public class Diretor : MonoBehaviour
         Time.timeScale = 1;
         this.pomba.Reiniciar();
         this.DestruirObstaculos();
+        this.somDeFundo.Play();
         this.pontuacao.Reiniciar(); // Corrigido com os parênteses
     }
 

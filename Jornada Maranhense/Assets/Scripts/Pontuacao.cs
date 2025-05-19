@@ -7,6 +7,8 @@ public class Pontuacao : MonoBehaviour
 {
     [SerializeField]
     private Text textoPontuacao;
+    [SerializeField]
+    private AudioSource audioPontuacao;
 
     private int pontos;
 
@@ -15,6 +17,7 @@ public class Pontuacao : MonoBehaviour
         this.pontos++;
         Debug.Log(this.pontos);
         this.textoPontuacao.text =  this.pontos.ToString();
+        this.audioPontuacao.Play();
     }
     public void Reiniciar()
     {
