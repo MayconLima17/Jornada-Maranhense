@@ -20,7 +20,7 @@ public class GeradorDeObstaculos : MonoBehaviour
     void Update()
     {
         this.cronometro -= Time.deltaTime;
-        if (this.cronometro < 0)
+        if (this.cronometro <0)
         {
             GameObject.Instantiate(this.manualDeInstrucoes, this.transform.position, Quaternion.identity);
             this.cronometro = this.tempoParaGerar; 
